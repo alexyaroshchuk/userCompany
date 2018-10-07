@@ -19,9 +19,9 @@ class UserTableSeeder extends Seeder
         $faker->addProvider(new Faker\Provider\Internet($faker));
         $faker->addProvider(new Faker\Provider\DateTime($faker));
 
-        $limit = 50000;
+//        $limit = 50000;
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             DB::table('users')->insert([
                 'name' => $faker->name,
                 'amount_of_wages' => rand(8000, 50000),
@@ -32,26 +32,49 @@ class UserTableSeeder extends Seeder
                 'director_id' => 0,
             ]);
         }
-        for ($i = 5; $i < 20; $i++) {
+        for ($i = 20; $i < 200; $i++) {
             DB::table('users')->insert([
                 'name' => $faker->name,
                 'amount_of_wages' => rand(8000, 50000),
                 'employment_date' =>  $faker->dateTime,
                 'email' => $faker->unique()->email,
-                'position_id' => rand(2, 3),
+                'position_id' => 2,
                 'password' => bcrypt('secret'),
-                'director_id' => rand(1,5),
+                'director_id' => rand(1,19),
             ]);
         }
-        for ($i = 20; $i < 100; $i++) {
+        for ($i = 200; $i < 1000; $i++) {
             DB::table('users')->insert([
                 'name' => $faker->name,
                 'amount_of_wages' => rand(8000, 50000),
                 'employment_date' =>  $faker->dateTime,
                 'email' => $faker->unique()->email,
-                'position_id' => rand(4, 5),
+                'position_id' => 3,
                 'password' => bcrypt('secret'),
-                'director_id' => rand(6, 20),
+                'director_id' => rand(20, 199),
+            ]);
+        }
+        for ($i = 1000; $i < 10000; $i++) {
+            DB::table('users')->insert([
+                'name' => $faker->name,
+                'amount_of_wages' => rand(8000, 50000),
+                'employment_date' =>  $faker->dateTime,
+                'email' => $faker->unique()->email,
+                'position_id' => rand(4,5),
+                'password' => bcrypt('secret'),
+                'director_id' => rand(200, 9999),
+            ]);
+        }
+
+        for ($i = 10000; $i < 50000; $i++) {
+            DB::table('users')->insert([
+                'name' => $faker->name,
+                'amount_of_wages' => rand(8000, 50000),
+                'employment_date' =>  $faker->dateTime,
+                'email' => $faker->unique()->email,
+                'position_id' => rand(4,5),
+                'password' => bcrypt('secret'),
+                'director_id' => rand(1000, 9999),
             ]);
         }
     }

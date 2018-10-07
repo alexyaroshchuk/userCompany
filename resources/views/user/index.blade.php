@@ -58,11 +58,10 @@
                                         </button>
                                     </div>
                                     <div>
-                                        <form method="POST" action="{{route('users.delete', ['users' => $user['id']])}}">
-                                            <button id="delete-user" onclick = "deleteUser({{ $user->id }})" title="Delete" data-toggle="tooltip" type="button" style="border: 0; background:0">
-                                                <span class="material-icons">&#xE872;</span>
-                                            </button>
-                                        </form>
+                                        <button id="delete-buyer" onclick = "deleteSupplier({{ $user->id }})" title="Delete" data-toggle="tooltip" type="button" style="border: 0; background:0">
+                                            <span class="material-icons">&#xE872;</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -73,7 +72,7 @@
         </div>
     </div>
     <script>
-        function deleteUser(userId) {
+        function deleteSupplier(userId) {
             swal({
                 title: "Are you sure to delete ?",
                 text: "You will not be able to recover this imaginary file !!",
@@ -87,7 +86,7 @@
                     url: "/users/" + userId + "/delete",
                     method: "POST",
                     data: {
-                        id: buyerId,
+                        id: userId,
                         _token: '{{csrf_token()}}'
                     },
                     success: function(response) {
